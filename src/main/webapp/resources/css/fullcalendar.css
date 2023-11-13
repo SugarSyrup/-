@@ -1,0 +1,102 @@
+/* calendar header tools */
+div.fc-toolbar {
+    justify-content: flex-end !important;
+    flex-direction: row-reverse;
+}
+
+div.fc-toolbar div.fc-toolbar-chunk:nth-child(3) {
+    display:flex;
+    flex-direction: row-reverse;
+
+    margin-left:60px;
+}
+
+div.fc-toolbar div.fc-toolbar-chunk:nth-child(3) button.fc-today-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    padding: 10px 20px;
+    border-radius: 0px 3px 3px 0px;
+    border: 1px solid #CFCFCF;
+    background: #FFF;
+
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+div.fc-toolbar div.fc-toolbar-chunk:nth-child(3) div.fc-button-group button{
+    border: 1px solid #CFCFCF;
+    background: #FFF;
+}
+
+div.fc-toolbar div.fc-toolbar-chunk:nth-child(3) div.fc-button-group button:nth-child(1) {
+    border-radius: 3px 0px 0px 3px;
+}
+
+div.fc-toolbar div.fc-toolbar-chunk:nth-child(3) div.fc-button-group button:nth-child(2) {
+    border-radius:0px;
+}
+
+div.fc-toolbar div.fc-toolbar-chunk:nth-child(3) div.fc-button-group button span{
+    color: #434343;
+}
+
+div.fc-toolbar div.fc-toolbar-chunk:nth-child(1) {
+    margin-left:40px;
+}
+
+div.fc-toolbar div.fc-toolbar-chunk:nth-child(1) h2{
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* calendar header */
+thead {
+    height:44px;
+}
+
+thead tr th.fc-col-header-cell {
+    padding-top:4px;
+}
+
+thead tr th.fc-col-header-cell div.fc-scrollgrid-sync-inner a {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+/* cell date style */
+table td.fd-day div
+
+/* today cell style*/
+table tbody tr td.fc-day-today {
+    background-color:#FFE4CB !important;
+}
+
+/* events style */
+
+a.fc-event {
+    height:30px;
+    display:flex;
+    align-items: center;
+    padding-left:8px;
+
+    font-size:20px;
+    font-weight:700;
+}

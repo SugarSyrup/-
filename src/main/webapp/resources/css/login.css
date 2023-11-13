@@ -1,0 +1,25 @@
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form span.header {
+    color: #081935;
+    text-align: center;
+    font-family: Inter;
+    font-size: 62px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    margin-bottom:72px;
+}
+
+form div.inputContainer {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:6px;
+}
