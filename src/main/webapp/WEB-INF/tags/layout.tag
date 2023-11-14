@@ -3,7 +3,6 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ attribute name="script" fragment="true" %>
 
-
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -17,7 +16,7 @@
         <script src="resources/js/lib/fullcalendar-6.1.9.js"></script>
     </head>
     <body>
-        <t:sidebar isLogin="false" isAdmin="false"/>
+        <t:sidebar isLogin="${sessionScope.isLogin}" isAdmin="${sessionScope.isAdmin}"/>
         <jsp:doBody/>
         <jsp:invoke fragment="script"/>
     </body>

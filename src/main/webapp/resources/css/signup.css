@@ -24,17 +24,19 @@ form span.header {
     font-weight: 900;
     line-height: normal;
 
-    margin-bottom:54px;
+    margin-bottom:20px;
 }
 
-form div.inputContainer {
+form div.inputContainer,
+form div.inputfileContainer {
     display:flex;
     flex-direction: column;
     align-items: flex-start;
     gap:6px;
 }
 
-form div.inputContainer label {
+form div.inputContainer label,
+form div.inputfileContainer label {
     color: #081935;
     text-align: center;
     font-family: Gmarket Sans;
@@ -75,6 +77,63 @@ form div.inputContainer input::placeholder {
     line-height: normal;
 }
 
+form div.rowContent {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    gap:16px;
+}
+
+form div.rowContent div.inputContainer input,
+form div.rowContent div.inputContainer select {
+    width:240px;
+}
+
+form div.rowContent div.inputContainer select {
+    height:60px;
+    box-sizing: border-box;
+
+    border:none;
+    border-radius:10px;
+    padding:20px 12px;
+    background-color:#DADADA;
+
+    display:inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    color: #000;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+form div.inputfileContainer input[type=file] {
+    width:500px;
+    height:46px;
+}
+
+form div.inputfileContainer input[type=file]::file-selector-button {
+    height:40px;
+
+    border:none;
+    border-radius:10px;
+    background-color:#DADADA;
+
+    padding:10px 12px;
+
+    color: #000;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+
+    cursor:pointer;
+}
+
 form input[type=submit] {
     display: flex;
     width: 500px;
@@ -95,8 +154,10 @@ form input[type=submit] {
     cursor:pointer;
 }
 
+
+
 form span.serverMessage {
-    margin-top:32px;
+    margin-top:12px;
     margin-bottom:4px;
 
     font-size:18px;

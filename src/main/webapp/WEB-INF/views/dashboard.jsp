@@ -22,6 +22,7 @@
                     buttonText: {
                         today: "오늘"
                     },
+                    //headerToolbar: {center: 'dayGridMonth,timeGridWeek,timeGridDay,list' },
                     events:[
                         <c:forEach begin="0" end="${requestScope.calendarData.size()}" step="1" var="index">
                         {

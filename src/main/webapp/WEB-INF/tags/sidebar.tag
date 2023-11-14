@@ -4,7 +4,9 @@
 <%@ attribute name="isAdmin" type="java.lang.Boolean" %>
 
 <%@ tag import="java.util.List" %>
-<%List<String> departments = (List<String>) request.getAttribute("departments"); %>
+<%
+    List<String> departments = (List<String>) request.getAttribute("departments");
+%>
 
 <div class="sidebar">
     <div class="filter">

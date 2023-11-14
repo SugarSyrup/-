@@ -8,18 +8,19 @@
     <link rel="stylesheet" href="resources/css/login.css" >
 </head>
 <body>
-    <form>
+    <form action="/login" method="post">
         <span class="header">로그인</span>
         <div class="inputContainer">
-            <label for="email">Email</label>
-            <input type="text" id="email"/>
+            <label for="id">ID</label>
+            <input type="text" name="id" id="id" placeholder="ID를 입력해주세요.."/>
         </div>
         <div class="inputContainer">
             <label for="password">비밀번호</label>
-            <input type="password" id="password"/>
+            <input type="password" name="password" id="password" placeholder="비밀번호를 입력해주세요.."/>
         </div>
+        <span class="serverMessage">${requestScope.message}</span>
         <input type="submit" value="로그인"/>
     </form>
-    <a><span>회원가입</span></a>
+    <a class="signupSubmit" href="/signup"><span>회원가입</span></a>
 </body>
 </html>
