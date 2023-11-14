@@ -13,7 +13,7 @@
         <span class="title">필터</span>
         <% for(String deparment : departments) { %>
             <div>
-                <input type="checkbox" id=<%=deparment%> >
+                <input type="checkbox" id=<%=deparment%> name=<%=deparment%> class="filterInput" checked>
                 <label for=<%=deparment%> ><span><%= deparment %></span></label>
             </div>
         <% } %>
@@ -38,3 +38,14 @@
         </div>
     </div>
 </div>
+<script>
+    const filterInputs = document.querySelectorAll(".filterInput");
+    Window.prototype.filters = {};
+    filterInputs.forEach(filterinput => {
+        filters[filterinput.name] = filterinput.checked;
+        filterinput.addEventListener('input', () => {
+            filters[filterinput.name] = filterinput.checked;
+            renderCalendar();
+        })
+    })
+</script>

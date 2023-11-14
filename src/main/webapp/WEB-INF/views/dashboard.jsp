@@ -12,7 +12,20 @@
 <t:layout>
     <jsp:attribute name="script">
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
+            let events = [
+                <c:forEach begin="0" end="${requestScope.calendarData.size()}" step="1" var="index">
+                {
+                    title: "${requestScope.calendarData[index].getTitle()} 연차",
+                    start: "${requestScope.calendarData[index].getStart_date()}",
+                    end: "${requestScope.calendarData[index].getEnd_date()}",
+                    backgroundColor: "${requestScope.calendarData[index].getBackgroundColor()}",
+                    textColor:"white",
+                    department:"${requestScope.calendarData[index].getDepartment()}"
+                },
+                </c:forEach>
+            ];
+
+            function renderCalendar() {
                 var calendarEl = document.getElementById('calendar');
                 var calendar = new FullCalendar.Calendar(calendarEl, {
                     initialView: 'dayGridMonth',
@@ -23,21 +36,16 @@
                         today: "오늘"
                     },
                     //headerToolbar: {center: 'dayGridMonth,timeGridWeek,timeGridDay,list' },
-                    events:[
-                        <c:forEach begin="0" end="${requestScope.calendarData.size()}" step="1" var="index">
-                        {
-                            title: "${requestScope.calendarData[index].getTitle()} 연차",
-                            start: "${requestScope.calendarData[index].getStart_date()}",
-                            end: "${requestScope.calendarData[index].getEnd_date()}",
-                            backgroundColor: "${requestScope.calendarData[index].getBackgroundColor()}",
-                            textColor:"white"
-                        },
-                        </c:forEach>
-
-                    ]
+                    events: events.filter(event => {
+                        if(filters[event.department]) {
+                            return true;
+                        }
+                        return false;
+                    })
                 });
                 calendar.render();
-            });
+            }
+            document.addEventListener('DOMContentLoaded', renderCalendar);
         </script>
     </jsp:attribute>
     <jsp:body>

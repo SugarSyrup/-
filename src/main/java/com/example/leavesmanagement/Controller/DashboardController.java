@@ -39,6 +39,7 @@ public class DashboardController {
                     .start_date(leaves.get(i).getStart_date())
                     .end_date(leaves.get(i).getEnd_date())
                     .backgroundColor(swiftCodeRepository.getColor(user.getDepartment()))
+                    .department(user.getDepartment())
                     .build();
 
             calendarData.add(data);

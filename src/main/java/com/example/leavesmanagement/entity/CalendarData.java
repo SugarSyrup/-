@@ -15,4 +15,5 @@ public class CalendarData {
     private Date start_date;
     private Date end_date;
     private String backgroundColor;
+    private String department;
 }
