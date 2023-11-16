@@ -1,5 +1,6 @@
 package com.example.leavesmanagement.Repository;
 
+import com.example.leavesmanagement.entity.Leaves;
 import lombok.Cleanup;
 import org.springframework.stereotype.Repository;
 
@@ -48,5 +49,23 @@ public class SwiftCodeRepository {
         rs.next();
 
         return rs.getString("name");
+    }
+
+
+    public List<String> getLeavesType() throws Exception {
+        String sql = "select name from swiftcode where CodeTypeId = 'LTY' ORDER BY SwiftCodeId";
+        @Cleanup Connection conn = null;
+        @Cleanup PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        conn = dataSource.getConnection();
+        pstmt = conn.prepareStatement(sql);
+        rs = pstmt.executeQuery();
+
+        List<String> returnValue = new ArrayList<String>();
+        while(rs.next()) {
+            returnValue.add(rs.getString("name"));
+        }
+        return returnValue;
     }
 }

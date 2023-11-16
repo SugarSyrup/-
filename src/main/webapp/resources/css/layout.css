@@ -104,6 +104,15 @@ div.sidebar div.userFeatureContainer a span {
     line-height: normal;
 }
 
+div.sidebar div.userFeatureContainer a.logout span {
+    position:absolute;
+    right:16px;
+    bottom:16px;
+    color:red;
+    font-weight:900;
+    font-size:18px;
+}
+
 div.sidebar div.userFeatureContainer div.blurBox {
     width:100%;
     height:100%;
@@ -139,3 +148,4 @@ div.sidebar div.userFeatureContainer div.blurBox a.loginButton {
     letter-spacing: -1.5px;
     text-decoration: none;
 }
+

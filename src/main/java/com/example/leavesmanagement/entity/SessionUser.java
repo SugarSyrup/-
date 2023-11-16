@@ -1,8 +1,8 @@
 package com.example.leavesmanagement.entity;
 
+
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -11,12 +11,11 @@ import java.util.Date;
 @NoArgsConstructor()
 @AllArgsConstructor()
 @Builder()
-public class Leaves {
+public class SessionUser {
     private int user_no;
-    private String start_date;
-    private String end_date;
-
-    private String type;
-    private String desc;
-    private int dates;
+    private String department;
+    private String role;
+    private String name;
+    private String sign;
+    private int leavesDays;
 }

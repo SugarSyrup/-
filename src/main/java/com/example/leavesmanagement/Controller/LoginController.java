@@ -2,7 +2,9 @@ package com.example.leavesmanagement.Controller;
 
 import com.example.leavesmanagement.Repository.UserRepository;
 import com.example.leavesmanagement.entity.RepositoryMessage;
+import com.example.leavesmanagement.entity.SessionUser;
 import com.example.leavesmanagement.entity.User;
+import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +25,15 @@ public class LoginController {
         return "login";
     }
 
+    @GetMapping("logout")
+    public String getLogout(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        session.setAttribute("isLogin", false);
+        session.setAttribute("isAdmin", false);
+
+        return "redirect:/";
+    }
+
     @PostMapping("login")
     public String postLogin(HttpServletRequest req) throws Exception {
         String id = req.getParameter("id");
@@ -32,7 +43,15 @@ public class LoginController {
 
         if (msg.isSuccess()) {
             HttpSession session = req.getSession();
-            session.setAttribute("user", msg.getObj());
+            SessionUser user = SessionUser.builder()
+                    .user_no(msg.getObj().getUser_no())
+                    .sign(msg.getObj().getSign())
+                    .role(msg.getObj().getRole())
+                    .name(msg.getObj().getName())
+                    .department(msg.getObj().getDepartment())
+                    .leavesDays(msg.getObj().getLeavesDays())
+                    .build();
+            session.setAttribute("user", user);
             session.setAttribute("isLogin", true);
 
             if(msg.getObj().getAdmin_role().equals("USER")) {

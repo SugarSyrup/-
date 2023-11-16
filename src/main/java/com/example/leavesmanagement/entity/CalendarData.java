@@ -12,8 +12,8 @@ import java.util.Date;
 @Builder()
 public class CalendarData {
     private String title;
-    private Date start_date;
-    private Date end_date;
+    private String start_date;
+    private String end_date;
     private String backgroundColor;
     private String department;
 }

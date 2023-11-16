@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="resources/css/common/reset.css" >
         <link rel="stylesheet" href="resources/css/layout.css" >
         <link rel="stylesheet" href="resources/css/fullcalendar.css" >
+        <link rel="stylesheet" href="resources/css/modal.css" >
         <script src="resources/js/lib/jquery-3.7.1.js"></script>
         <script src="resources/js/lib/fullcalendar-6.1.9.js"></script>
     </head>

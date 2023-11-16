@@ -21,7 +21,7 @@
     <div>
         <c:if test="${isAdmin}">
             <div class="userFeatureContainer">
-                <a><span>회원 관리</span></a>
+                <a href="/users"><span>회원 관리</span></a>
                 <a><span>공통 코드 관리</span></a>
                 <a><span>전체 휴가 관리</span></a>
             </div>
@@ -29,7 +29,8 @@
         <div class="userFeatureContainer">
             <a><span>내 정보</span></a>
             <a><span>휴가 내역</span></a>
-            <a><span>휴가 등록</span></a>
+            <a id="leavesRegistBtn"><span>휴가 등록</span></a>
+            <a class="logout" href="/logout"><span>로그아웃</span></a>
             <c:if test="${!isLogin}">
                 <div class="blurBox">
                     <a class="loginButton" href="/login">로그인 / 회원가입</a>
@@ -48,4 +49,8 @@
             renderCalendar();
         })
     })
+
+    document.getElementById("leavesRegistBtn").addEventListener('click', () => {
+        document.querySelector(".modal_wrapper").open = true;
+    });
 </script>
