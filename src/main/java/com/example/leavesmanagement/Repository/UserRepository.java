@@ -1,9 +1,8 @@
 package com.example.leavesmanagement.Repository;
 
-import com.example.leavesmanagement.entity.Leaves;
-import com.example.leavesmanagement.entity.RepositoryMessage;
-import com.example.leavesmanagement.entity.User;
+import com.example.leavesmanagement.entity.*;
 import lombok.Cleanup;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -12,6 +11,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +22,40 @@ public class UserRepository {
     private PasswordEncoder passwordEncoder;
     public UserRepository(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public List<UserData> getUsers(int page) throws Error, SQLException {
+        String sql = "select * from user ORDERS LIMIT 15 OFFSET ?";
+        @Cleanup Connection conn = null;
+        @Cleanup PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        conn = dataSource.getConnection();
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1,page * 15);
+        rs = pstmt.executeQuery();
+
+        List<UserData> returnValue = new ArrayList<UserData>();
+
+        while(rs.next()) {
+            UserData user = UserData.builder()
+                    .name(rs.getString("name"))
+                    .user_no(rs.getInt("user_no"))
+                    .sign(rs.getString("sign"))
+                    .totalLeaves(rs.getInt("totalLeaves"))
+                    .department(rs.getString("department"))
+                    .role(rs.getString("role"))
+                    .admin_role(rs.getString("admin_role"))
+                    .regist_date(rs.getString("regist_date"))
+                    .before_date(rs.getString("before_date"))
+                    .enter_date(rs.getString("enter_date"))
+                    .isdelete(rs.getInt("isdelete"))
+                    .build();
+
+            returnValue.add(user);
+        }
+
+        return returnValue;
     }
 
     public User findUser(int user_no) throws Exception {
@@ -50,6 +84,7 @@ public class UserRepository {
                     .regist_date(rs.getDate("regist_date"))
                     .up_date(rs.getDate("up_date"))
                     .isdelete(rs.getInt("isdelete"))
+                    .totalLeaves(rs.getInt("totalLeaves"))
                     .build();
 
         return returnValue;
@@ -118,4 +153,64 @@ public class UserRepository {
         pstmt.executeQuery();
     }
 
+    public void setUserTimeData(int user_no, String before_date, String enter_date) throws Exception{
+        String sql = "UPDATE user SET before_date = ?, enter_date = ? WHERE user_no = ?";
+        @Cleanup Connection conn = null;
+        @Cleanup PreparedStatement pstmt = null;
+
+        conn = dataSource.getConnection();
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(3, user_no);
+        pstmt.setString(1, before_date);
+        pstmt.setString(2, enter_date);
+
+        pstmt.executeQuery();
+    }
+
+    public UserData getUserDateData(int user_no) throws Exception {
+        String sql = "SELECT * from user WHERE user_no = ?";
+        @Cleanup Connection conn = null;
+        @Cleanup PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        conn = dataSource.getConnection();
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, user_no);
+        rs = pstmt.executeQuery();
+
+        UserData returnValue = new UserData();
+        if(rs.next()) {
+            returnValue = UserData.builder()
+                    .before_date(rs.getString("before_date"))
+                    .enter_date(rs.getString("enter_date"))
+                    .build();
+
+            System.out.println(returnValue);
+            return returnValue;
+        }
+
+        return returnValue;
+    }
+
+    public void setUserDelete(int user_no) throws Exception {
+        String sql = "UPDATE user SET isdelete=1 WHERE user_no=?";
+        @Cleanup Connection conn = null;
+        @Cleanup PreparedStatement pstmt = null;
+
+        conn = dataSource.getConnection();
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, user_no);
+        pstmt.executeQuery();
+    }
+
+    public void setUserRestore(int user_no) throws Exception {
+        String sql = "UPDATE user SET isdelete=0 WHERE user_no=?";
+        @Cleanup Connection conn = null;
+        @Cleanup PreparedStatement pstmt = null;
+
+        conn = dataSource.getConnection();
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, user_no);
+        pstmt.executeQuery();
+    }
 }

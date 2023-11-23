@@ -1,50 +1,11 @@
-
-dialog.modal_wrapper {
-    position: fixed;
-    z-index: 100;
-    width: 100%;
-    height: 100%;
-    background-color: inherit;
-    backdrop-filter: blur(6px);
-    transition: all 0.3s;
-
-    border:none;
-    padding:0;
-}
-
-dialog.modal_wrapper div.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 1000;
-    transform: translate(-50%, -50%);
-
-    padding: 40px 80px;
-
-    border-radius: 20px;
-    border: 1px solid #CCC;
-    background: #FFF;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-dialog.modal_wrapper div.modal svg{
-    position:absolute;
-    top:16px;
-    right:16px;
-
-    width:24px;
-    height:24px;
-    cursor:pointer;
-}
-
-dialog.modal_wrapper div.leavesRegistContainer form {
+dialog.modal_wrapper div.modal form {
     display:flex;
     flex-direction: column;
     align-items: center;
     gap:8px;
 }
 
-dialog.modal_wrapper div.leavesRegistContainer form span.header {
+dialog.modal_wrapper div.modal form span.header {
     margin-bottom: 20px;
     color: #081935;
     text-align: center;
@@ -55,14 +16,14 @@ dialog.modal_wrapper div.leavesRegistContainer form span.header {
     line-height: normal;
 }
 
-dialog.modal_wrapper div.leavesRegistContainer div.inputContainer {
+dialog.modal_wrapper div.modal div.inputContainer {
     display:flex;
     flex-direction: column;
     align-items: flex-start;
     gap:6px;
 }
 
-dialog.modal_wrapper div.leavesRegistContainer div.inputContainer label {
+dialog.modal_wrapper div.modal div.inputContainer label {
     color: #081935;
     text-align: center;
     font-family: Gmarket Sans;
@@ -72,8 +33,8 @@ dialog.modal_wrapper div.leavesRegistContainer div.inputContainer label {
     line-height: normal;
 }
 
-dialog.modal_wrapper div.leavesRegistContainer form div.inputContainer input,
-dialog.modal_wrapper div.leavesRegistContainer form div.inputContainer select {
+dialog.modal_wrapper div.modal form div.inputContainer input,
+dialog.modal_wrapper div.modal form div.inputContainer select {
     width:500px;
     height:60px;
     box-sizing: border-box;
@@ -95,7 +56,7 @@ dialog.modal_wrapper div.leavesRegistContainer form div.inputContainer select {
     line-height: normal;
 }
 
-dialog.modal_wrapper div.leavesRegistContainer form div.inputContainer textarea {
+dialog.modal_wrapper div.modal form div.inputContainer textarea {
     display: inline-flex;
     width:500px;
     height: 120px;
@@ -115,24 +76,24 @@ dialog.modal_wrapper div.leavesRegistContainer form div.inputContainer textarea 
     line-height: normal;
 }
 
-dialog.modal_wrapper div.leavesRegistContainer form div.rowContent {
+dialog.modal_wrapper div.modal form div.rowContent {
     display:flex;
     flex-direction: row;
     align-items: center;
     gap:16px;
 }
 
-dialog.modal_wrapper div.leavesRegistContainer div.typeContainer div.rowContent {
+dialog.modal_wrapper div.modal div.typeContainer div.rowContent {
     width:500px;
 }
 
-dialog.modal_wrapper div.leavesRegistContainer form div.rowContent div.inputContainer input,
-dialog.modal_wrapper div.leavesRegistContainer form div.rowContent div.inputContainer select {
+dialog.modal_wrapper div.modal form div.rowContent div.inputContainer input,
+dialog.modal_wrapper div.modal form div.rowContent div.inputContainer select {
     width:240px;
 }
 
 
-dialog.modal_wrapper div.leavesRegistContainer form input[type=submit] {
+dialog.modal_wrapper div.modal form input[type=submit] {
     display: flex;
     width: 500px;
     padding: 10px 171px 9px 172px;
@@ -150,4 +111,12 @@ dialog.modal_wrapper div.leavesRegistContainer form input[type=submit] {
     font-weight: 500;
     line-height: normal;
     cursor:pointer;
+}
+
+dialog.modal_wrapper div.modal form span.inputTitle {color: #081935;
+    font-family: Gmarket Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }

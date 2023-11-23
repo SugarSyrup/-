@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ attribute name="isLogin" type="java.lang.Boolean" %>
 <%@ attribute name="isAdmin" type="java.lang.Boolean" %>
+<%@ attribute name="isDashboard" type="java.lang.Boolean" %>
 
 <%@ tag import="java.util.List" %>
 <%
@@ -9,15 +10,22 @@
 %>
 
 <div class="sidebar">
-    <div class="filter">
-        <span class="title">필터</span>
-        <% for(String deparment : departments) { %>
-            <div>
-                <input type="checkbox" id=<%=deparment%> name=<%=deparment%> class="filterInput" checked>
-                <label for=<%=deparment%> ><span><%= deparment %></span></label>
+    <c:choose>
+        <c:when test="${isDashboard}">
+            <div class="filter">
+                <span class="title">필터</span>
+                <% for(String deparment : departments) { %>
+                <div>
+                    <input type="checkbox" id=<%=deparment%> name=<%=deparment%> class="filterInput" checked>
+                    <label for=<%=deparment%> ><span><%= deparment %></span></label>
+                </div>
+                <% } %>
             </div>
-        <% } %>
-    </div>
+        </c:when>
+        <c:otherwise>
+            <a href="/" class="back"><span>🔙 캘린더로 돌아가기</span></a>
+        </c:otherwise>
+    </c:choose>
     <div>
         <c:if test="${isAdmin}">
             <div class="userFeatureContainer">

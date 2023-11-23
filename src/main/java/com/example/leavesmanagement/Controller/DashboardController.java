@@ -45,6 +45,7 @@ public class DashboardController {
 
         req.setAttribute("departments", departments);
         req.setAttribute("types", types);
+        req.setAttribute("isDashboard", true);
 
         for(int i = 0; i < leaves.size(); i++) {
             User user = userRepository.findUser(leaves.get(i).getUser_no());

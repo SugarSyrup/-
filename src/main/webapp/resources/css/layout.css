@@ -79,6 +79,26 @@ div.sidebar div.filter input[type=checkbox]:checked + label:before {
     vertical-align: middle;
 }
 
+div.sidebar a.back {
+    width:100%;
+    margin-top:60px;
+
+    text-decoration: none;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.sidebar a.back span {
+    color: #081935;
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
 div.sidebar div.userFeatureContainer {
     position:relative;
 

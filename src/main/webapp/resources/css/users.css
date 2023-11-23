@@ -1,0 +1,338 @@
+dialog.modal_wrapper div.modal form {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:38px;
+}
+
+dialog.modal_wrapper div.modal form span.header {
+    margin-bottom: 20px;
+    color: #081935;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 62px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal div.inputContainer {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:6px;
+}
+
+dialog.modal_wrapper div.modal div.inputContainer label {
+    color: #081935;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal form input#user_no {
+    display:none;
+}
+
+dialog.modal_wrapper div.modal form div.inputContainer input,
+dialog.modal_wrapper div.modal form div.inputContainer select {
+    width:500px;
+    height:60px;
+    box-sizing: border-box;
+
+    border:none;
+    border-radius:10px;
+    padding:20px 12px;
+    background-color:#DADADA;
+
+    display:inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    color: #000;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal form div.inputContainer textarea {
+    display: inline-flex;
+    width:500px;
+    height: 120px;
+    box-sizing:border-box;
+    padding:19px 12px;
+    align-items: center;
+    flex-shrink: 0;
+
+    border-radius: 10px;
+    background: #DADADA;
+
+    color: #959595;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal form div.rowContent {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap:16px;
+}
+
+dialog.modal_wrapper div.modal div.typeContainer div.rowContent {
+    width:500px;
+    margin-top:8px;
+}
+
+dialog.modal_wrapper div.modal form div.rowContent div.inputContainer input,
+dialog.modal_wrapper div.modal form div.rowContent div.inputContainer select {
+    width:240px;
+}
+
+
+dialog.modal_wrapper div.modal form input[type=submit] {
+    display: flex;
+    width: 500px;
+    padding: 10px 171px 9px 172px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    background: #081935;
+
+    color: #FFF;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor:pointer;
+}
+
+dialog.modal_wrapper div.modal form span.inputTitle {
+    color: #081935;
+    font-family: Gmarket Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal form div.calcContainer {
+    display:flex;
+    justify-content: space-between;
+    align-items:flex-end;
+    width:100%;
+}
+
+dialog.modal_wrapper div.modal form div.calcContainer span.title{
+    color: #081935;
+    font-family: Gmarket Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal form div.calcContainer span.flag{
+    color: #081935;
+    font-family: Gmarket Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal form div.calcContainer span.calcResult{
+    color: #081935;
+    font-family: Gmarket Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal {
+    display:flex;
+    flex-direction:column;
+    align-items: flex-end;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal div.header {
+    width:40vw;
+    display:flex;
+    justify-content: space-between;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal div.header span {
+    color: #081935;
+    font-family: Gmarket Sans;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal div.header div.rightContent{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal div.header div.rightContent label{
+    color: #081935;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal div.header div.rightContent input{
+    padding: 8px 10px;
+    border-radius:10px;
+    background-color:#DADADA;
+    border: none;
+
+    color: #000;
+    font-family: Gmarket Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal div.header div.rightContent svg{
+    width:24px;
+    height:24px;
+    color:#434343;
+
+    right:46px;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal {
+    height:70vh;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table {
+    width:95%;
+    max-height:60vh;
+    overflow:auto;
+
+    padding-right:20px;
+    position:relative;
+    margin-top:30px;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table::-webkit-scrollbar {
+    width:18px;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table::-webkit-scrollbar-thumb {
+    background-color:lightgrey;
+    border-radius:30px;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table::-webkit-scrollbar-track {
+    background-color:#efefef;
+    border-radius:30px;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table {
+    width:100%;
+    text-align:center;
+    position:relative;
+    border-collapse: separate;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table thead{
+    position:sticky;
+    top:0px;
+    width:80%;
+    height:60px;
+    background-color:white;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table thead td,
+dialog.modal_wrapper div.modal div#modalTotal table thead th {
+    padding-bottom:10px;
+    font-size:24px;
+    border-spacing:0;
+    border-bottom:1px solid lightgrey;
+    vertical-align:middle
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table thead th {
+    color: #000;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table thead th input[type=text]{
+    width:80px;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table thead th input[type=submit]{
+    display:none;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table tbody tr td:first-child { border-top-left-radius: 16px; }
+dialog.modal_wrapper div.modal div#modalTotal table tbody tr td:last-child { border-top-right-radius: 16px; }
+
+dialog.modal_wrapper div.modal div#modalTotal table tbody tr td:first-child { border-bottom-left-radius: 16px; }
+dialog.modal_wrapper div.modal div#modalTotal table tbody tr td:last-child { border-bottom-right-radius: 16px; }
+
+dialog.modal_wrapper div.modal div#modalTotal table tbody tr {
+    line-height:24px;
+    border-collapse: collapse;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table tbody tr:hover {
+    background-color:#bbbbbb;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table tbody tr> td {
+    text-align:center;
+    padding-bottom:12px;
+    padding-top:12px;
+    font-size:22px;
+    font-weight:600;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal div.pagination {
+    display: flex;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal div.pagination div.paginationBtn{
+    width:24px;
+    height:24px;
+    letter-spacing: -8px;
+
+    margin-top:12px;
+
+    cursor:pointer;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+dialog.modal_wrapper div.modal div#modalTotal table#excelTable {
+    display:none;
+}
