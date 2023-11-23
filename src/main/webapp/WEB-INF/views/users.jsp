@@ -47,7 +47,6 @@
                     timeflag[i].innerText = "(" + tmp + ".12 기준)";
                 }
 
-                console.log(now.getMonth());
                 Utils.calculateCurrentTimes(parseInt(yearSelect.value), parseInt(monthSelect.value), parseInt(enterDate.value.split("-")[0]), parseInt(enterDate.value.split("-")[1]), parseInt(enterDate.value.split("-")[2]), new Date())
                     .then(({beforeMonthTimes,currentMonthTimes}) => {
                         const calcResults = document.getElementsByClassName("calcResult");
@@ -92,7 +91,6 @@
             })
 
             enterDate.addEventListener('input',(e) => {
-                console.log(enterDate.value);
                 Utils.calculateCurrentTimes(parseInt(yearSelect.value), parseInt(monthSelect.value), parseInt(enterDate.value.split("-")[0]), parseInt(enterDate.value.split("-")[1]), parseInt(enterDate.value.split("-")[2]), new Date())
                     .then(({beforeMonthTimes,currentMonthTimes}) => {
                         const calcResults = document.getElementsByClassName("calcResult");
@@ -341,7 +339,6 @@
                 })
                 for(let i = 0; i <paginationBtns.length; i++) {
                     paginationBtns[i].addEventListener('click', (e) => {
-                        console.log(paginationIndex);
                         if(i >= 2 && i<=6 && e.currentTarget.innerText != "") {
                             paginationIndex = parseInt(e.currentTarget.innerText);
                         }
@@ -395,17 +392,10 @@
             window.addEventListener('DOMContentLoaded', () => {
                 const paginationBox = document.querySelector(".table_wrapper").querySelector(".pagination");
                 const paginationBtns = paginationBox.getElementsByClassName("paginationBtn");
-                const trs = document.querySelector(".table_wrapper").querySelector("tbody").querySelectorAll("tr");
+                let trs = document.querySelector(".table_wrapper").querySelector("tbody").querySelectorAll("tr.active");
 
                 setPageNum();
 
-                for(let j = 0; j <trs.length; j++) {
-                    trs[j].style.display = "none";
-                }
-
-                for(let i = (usersPaginationIndex - 1)*10; i<trs.length && i<usersPaginationIndex*10; i++) {
-                    trs[i].style.display = "table-row";
-                }
 
                 function setPageNum() {
                     for(let i = -2; i< 3; i++) {
@@ -414,6 +404,14 @@
                         } else {
                             paginationBtns[i+4].innerText = "";
                         }
+                    }
+
+                    for(let j = 0; j <trs.length; j++) {
+                        trs[j].style.display = "none";
+                    }
+
+                    for(let i = (usersPaginationIndex - 1)*10; i<trs.length && i<usersPaginationIndex*10; i++) {
+                        trs[i].style.display = "table-row";
                     }
                 }
                 paginationBtns[0].addEventListener('click', () => {
@@ -434,18 +432,10 @@
                 })
                 for(let i = 0; i <paginationBtns.length; i++) {
                     paginationBtns[i].addEventListener('click', (e) => {
-                        console.log(usersPaginationIndex);
                         if(i >= 2 && i<=6 && e.currentTarget.innerText != "") {
                             usersPaginationIndex = parseInt(e.currentTarget.innerText);
                         }
                         setPageNum();
-                        for(let j = 0; j <trs.length; j++) {
-                            trs[j].style.display = "none";
-                        }
-
-                        for(let i = (usersPaginationIndex - 1)*10; i<trs.length && i<usersPaginationIndex*10; i++) {
-                            trs[i].style.display = "table-row";
-                        }
                     })
                 }
 
@@ -453,14 +443,22 @@
                 search.addEventListener('submit', (e) => {
                     e.preventDefault();
                     const searchValue = search.querySelector('input').value;
+                    const searchtrs = document.querySelector(".table_wrapper").querySelector("tbody").querySelectorAll("tr");
+                    console.log(searchtrs);
 
-                    for (let i = 0; i<trs.length; i++) {
-                        if (trs[i].querySelector('td').innerText.includes(searchValue) && i > usersPaginationIndex * 10 && i < (usersPaginationIndex + 1) * 10 - 1) {
-                            trs[i].style.display = "table-row";
+                    for (let i = 0; i<searchtrs.length; i++) {
+                        if (searchtrs[i].querySelector('td').innerText.includes(searchValue)) {
+                            searchtrs[i].style.display = "table-row";
+                            searchtrs[i].className = "active";
                         } else {
-                            trs[i].style.display = "none";
+                            searchtrs[i].style.display = "none";
+                            searchtrs[i].className = "non_active";
                         }
                     }
+
+                    trs = document.querySelector(".table_wrapper").querySelector("tbody").querySelectorAll(".active");
+                    console.log(trs);
+                    setPageNum();
                 })
             })
         </script>
@@ -490,7 +488,7 @@
                     </thead>
                     <tbody>
                     <c:forEach begin="0" step="1" end="${requestScope.users.size() - 1}" var="userIdx">
-                        <tr>
+                        <tr class="active">
                             <td>${requestScope.users.get(userIdx).name}</td>
                             <td>${requestScope.users.get(userIdx).department}/${requestScope.users.get(userIdx).role}</td>
                             <td>${requestScope.users.get(userIdx).admin_role}</td>

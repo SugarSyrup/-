@@ -52,7 +52,8 @@ div.headerContainer a span{
     width:95%;
     height:80vh;
     max-height:80vh;
-    overflow:auto;
+    overflow-x:hidden;
+    overflow-y:auto;
 
     padding-right:20px;
     position:relative;
@@ -185,6 +186,11 @@ div.table_wrapper div.pagination {
     gap: 8px;
     font-size: 24px;
     font-weight: 900;
+
+    position:sticky;
+    top:30px;
+    right:50%;
+    transform:translateX(140px);
 }
 
 div.table_wrapper div.pagination div.paginationBtn{

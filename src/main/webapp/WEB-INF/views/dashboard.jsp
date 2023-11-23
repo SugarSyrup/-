@@ -73,7 +73,7 @@
         <div id="calendar" style="width: 100%; margin-top: 40px;">
         </div>
         <t:modal>
-            <form action="/registLeaves" method="post">
+            <form action="/registLeaves" method="post" id="registLeaves">
                 <span class="header">휴가 등록</span>
                 <div class="rowContent">
                     <div class="inputContainer">
