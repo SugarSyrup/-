@@ -1,0 +1,189 @@
+body{
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:16px;
+}
+
+form span.header {
+    color: #081935;
+    text-align: center;
+    font-family: Inter;
+    font-size: 62px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+
+}
+
+form div.inputContainer,
+form div.inputfileContainer {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:6px;
+}
+
+form div.inputContainer label,
+form div.inputfileContainer label {
+    color: #081935;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+form div.inputContainer input {
+    width:500px;
+    height:60px;
+    box-sizing: border-box;
+
+    border:none;
+    border-radius:10px;
+    padding:20px 12px;
+    background-color:#DADADA;
+
+    display:inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    color: #000;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+form div.inputContainer input::placeholder {
+    color: #959595;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+form div.rowContent {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    gap:16px;
+}
+
+form div.rowContent div.inputContainer input,
+form div.rowContent div.inputContainer select {
+    width:240px;
+}
+
+form div.rowContent div.inputContainer select {
+    height:60px;
+    box-sizing: border-box;
+
+    border:none;
+    border-radius:10px;
+    padding:20px 12px;
+    background-color:#DADADA;
+
+    display:inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    color: #000;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+form div.inputfileContainer input[type=file] {
+    width:500px;
+    height:46px;
+}
+
+form div.inputfileContainer input[type=file]::file-selector-button {
+    height:40px;
+
+    border:none;
+    border-radius:10px;
+    background-color:#DADADA;
+
+    padding:10px 12px;
+
+    color: #000;
+    font-family: Gmarket Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+
+    cursor:pointer;
+}
+
+form input[type=submit],
+button{
+    display: flex;
+    width: 500px;
+    padding: 10px 0px 9px 0px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    background: #081935;
+
+    color: #FFF;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor:pointer;
+}
+
+
+
+form span.serverMessage {
+    margin-top:12px;
+    margin-bottom:4px;
+
+    font-size:18px;
+    font-weight:900;
+    color:red;
+}
+
+a.signupSubmit {
+    display: flex;
+    width: 500px;
+    padding: 10px 0px 9px 0px;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    background: #081935;
+
+    color: #FFF;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    margin-top:16px;
+    cursor:pointer;
+    text-decoration:none;
+}

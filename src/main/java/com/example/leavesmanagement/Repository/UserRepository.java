@@ -153,6 +153,23 @@ public class UserRepository {
         pstmt.executeQuery();
     }
 
+    public void userEdit(User user)  throws Exception {
+        String sql = "UPDATE user SET password=?, name=?, department=?, role=?, sign=? WHERE user_no = ?";
+        @Cleanup Connection conn = null;
+        @Cleanup PreparedStatement pstmt = null;
+
+        conn = dataSource.getConnection();
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, passwordEncoder.encode(user.getPassword()));
+        pstmt.setString(2, user.getName());
+        pstmt.setString(3, user.getDepartment());
+        pstmt.setString(4, user.getRole());
+        pstmt.setString(5, user.getSign());
+        pstmt.setInt(6, user.getUser_no());
+
+        pstmt.executeQuery();
+    }
+
     public void setUserTimeData(int user_no, String before_date, String enter_date) throws Exception{
         String sql = "UPDATE user SET before_date = ?, enter_date = ? WHERE user_no = ?";
         @Cleanup Connection conn = null;

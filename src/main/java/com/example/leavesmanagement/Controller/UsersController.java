@@ -30,7 +30,6 @@ public class UsersController {
         req.setAttribute("users", users);
         return "users";
     }
-
     @PostMapping("calcLeaves")
     public String postUsers(HttpServletRequest req) throws Exception {
         String before = req.getParameter("month") + "/" + req.getParameter("year");

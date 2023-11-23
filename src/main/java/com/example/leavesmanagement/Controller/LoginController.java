@@ -44,6 +44,7 @@ public class LoginController {
         if (msg.isSuccess()) {
             HttpSession session = req.getSession();
             SessionUser user = SessionUser.builder()
+                    .id(msg.getObj().getId())
                     .user_no(msg.getObj().getUser_no())
                     .sign(msg.getObj().getSign())
                     .role(msg.getObj().getRole())
