@@ -154,20 +154,68 @@ public class UserRepository {
     }
 
     public void userEdit(User user)  throws Exception {
-        String sql = "UPDATE user SET password=?, name=?, department=?, role=?, sign=? WHERE user_no = ?";
-        @Cleanup Connection conn = null;
-        @Cleanup PreparedStatement pstmt = null;
+        if(user.getSign().equals("")) {
+            if(user.getPassword().equals("")){
+                String sql = "UPDATE user SET name=?, department=?, role=? WHERE user_no = ?";
+                @Cleanup Connection conn = null;
+                @Cleanup PreparedStatement pstmt = null;
 
-        conn = dataSource.getConnection();
-        pstmt = conn.prepareStatement(sql);
-        pstmt.setString(1, passwordEncoder.encode(user.getPassword()));
-        pstmt.setString(2, user.getName());
-        pstmt.setString(3, user.getDepartment());
-        pstmt.setString(4, user.getRole());
-        pstmt.setString(5, user.getSign());
-        pstmt.setInt(6, user.getUser_no());
+                conn = dataSource.getConnection();
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, user.getName());
+                pstmt.setString(2, user.getDepartment());
+                pstmt.setString(3, user.getRole());
+                pstmt.setInt(4, user.getUser_no());
 
-        pstmt.executeQuery();
+                pstmt.executeQuery();
+            } else {
+                String sql = "UPDATE user SET password=?, name=?, department=?, role=? WHERE user_no = ?";
+                @Cleanup Connection conn = null;
+                @Cleanup PreparedStatement pstmt = null;
+
+                conn = dataSource.getConnection();
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, passwordEncoder.encode(user.getPassword()));
+                pstmt.setString(2, user.getName());
+                pstmt.setString(3, user.getDepartment());
+                pstmt.setString(4, user.getRole());
+                pstmt.setInt(5, user.getUser_no());
+
+                pstmt.executeQuery();
+            }
+        }
+        else {
+            if(user.getPassword().equals("")){
+                String sql = "UPDATE user SET name=?, department=?, role=?, sign=? WHERE user_no = ?";
+                @Cleanup Connection conn = null;
+                @Cleanup PreparedStatement pstmt = null;
+
+                conn = dataSource.getConnection();
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, user.getName());
+                pstmt.setString(2, user.getDepartment());
+                pstmt.setString(3, user.getRole());
+                pstmt.setString(4, user.getSign());
+                pstmt.setInt(5, user.getUser_no());
+
+                pstmt.executeQuery();
+            } else {
+                String sql = "UPDATE user SET password=?, name=?, department=?, role=?, sign=? WHERE user_no = ?";
+                @Cleanup Connection conn = null;
+                @Cleanup PreparedStatement pstmt = null;
+
+                conn = dataSource.getConnection();
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, passwordEncoder.encode(user.getPassword()));
+                pstmt.setString(2, user.getName());
+                pstmt.setString(3, user.getDepartment());
+                pstmt.setString(4, user.getRole());
+                pstmt.setString(5, user.getSign());
+                pstmt.setInt(6, user.getUser_no());
+
+                pstmt.executeQuery();
+            }
+        }
     }
 
     public void setUserTimeData(int user_no, String before_date, String enter_date) throws Exception{

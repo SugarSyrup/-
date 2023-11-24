@@ -104,6 +104,7 @@ public class SignupController {
     public String getUserEdit(HttpServletRequest req) throws Exception {
         List<String> departments = swiftCodeRepository.getDepartments();
         req.setAttribute("departments", departments);
+        req.setAttribute("message", "");
         return "user-edit";
     }
 
@@ -119,10 +120,10 @@ public class SignupController {
         SessionUser sessionUser = (SessionUser) session.getAttribute("user");
         String realPath = req.getServletContext().getRealPath("/upload");
         Part filePart = req.getPart("sign");
-        String filename = filePart.getSubmittedFileName();
 
-
-        if(!sessionUser.getSign().equals(filename)) {
+        User user;
+        if(filePart.getSize() != 0) {
+            String filename = filePart.getSubmittedFileName();
             InputStream fis = filePart.getInputStream();
             String filePath = realPath + File.separator + filename;
             FileOutputStream fos = new FileOutputStream(filePath);
@@ -135,31 +136,46 @@ public class SignupController {
 
             fos.close();
             fis.close();
+
+
+            if(password.equals(passwordcheck)) {
+                user = User.builder()
+                        .user_no(userno)
+                        .password(password)
+                        .name(name)
+                        .department(department)
+                        .role(role)
+                        .sign(filename)
+                        .build();
+            } else {
+                req.setAttribute("message", "비밀번호가 일치하지 않습니다");
+                return "user-edit";
+            }
+        } else {
+            if(password.equals(passwordcheck)) {
+                user = User.builder()
+                        .user_no(userno)
+                        .password(password)
+                        .name(name)
+                        .department(department)
+                        .role(role)
+                        .sign("")
+                        .build();
+            } else {
+                req.setAttribute("message", "비밀번호가 일치하지 않습니다");
+                return "user-edit";
+            }
         }
 
         List<String> departments = swiftCodeRepository.getDepartments();
         req.setAttribute("departments", departments);
 
-        if(password.equals(passwordcheck)) {
-            User user = User.builder()
-                    .user_no(userno)
-                    .password(password)
-                    .name(name)
-                    .department(department)
-                    .role(role)
-                    .sign(filename)
-                    .build();
+        try {
+            userRepository.userEdit(user);
+        } catch (Exception e) {
 
-            try {
-                userRepository.userEdit(user);
-            } catch (Exception e) {
-
-                return "user-edit";
-            }
-            return "redirect:/";
-        } else {
-            req.setAttribute("message", "비밀번호가 일치하지 않습니다");
             return "user-edit";
         }
+        return "redirect:/";
     }
 }

@@ -36,7 +36,7 @@
         </c:if>
         <div class="userFeatureContainer">
             <a href="/user-edit"><span>내 정보</span></a>
-            <a><span>휴가 내역</span></a>
+            <a href="/totalLeaves"><span>휴가 내역</span></a>
             <a id="leavesRegistBtn"><span>휴가 등록</span></a>
             <a class="logout" href="/logout"><span>로그아웃</span></a>
             <c:if test="${!isLogin}">
