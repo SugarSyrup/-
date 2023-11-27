@@ -9,7 +9,7 @@
     List<String> departments = (List<String>) request.getAttribute("departments");
 %>
 
-<div class="sidebar">
+<div class="sidebar no-print">
     <c:choose>
         <c:when test="${isDashboard}">
             <div class="filter">

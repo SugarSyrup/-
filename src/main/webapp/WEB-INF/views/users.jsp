@@ -60,6 +60,20 @@
                     })
             }
 
+            const totalLeaves = document.getElementsByClassName("totalLeaves");
+            for(let i = 0; i<totalLeaves.length; i++) {
+                Utils.calculateCurrentTimes(parseInt(totalLeaves[i].dataset.beforedate.split("/")[0]), parseInt(totalLeaves[i].dataset.beforedate.split("/")[1]), parseInt(totalLeaves[i].dataset.enterdate.split("-")[0]), parseInt(totalLeaves[i].dataset.enterdate.split("-")[1]), parseInt(totalLeaves[i].dataset.enterdate.split("-")[2]), new Date())
+                    .then(({beforeMonthTimes,currentMonthTimes}) => {
+                        console.log({beforeMonthTimes,currentMonthTimes});
+                        if(currentMonthTimes+beforeMonthTimes < 12) {
+                            totalLeaves[i].innerText = "11일";
+                        } else {
+                            totalLeaves[i].innerText = parseInt((parseInt((currentMonthTimes - now.getMonth() - 1) / 12) - 1) / 2)+ 12 + "일";
+                        }
+                    })
+            }
+
+
             const yearSelect = document.getElementById("year");
             const monthSelect = document.getElementById("month");
             const enterDate = document.getElementById("enter_date");
@@ -495,11 +509,11 @@
                             <td>
                             <c:if test="${requestScope.users.get(userIdx).admin_role != 'root'}">
                                 <c:choose>
-                                    <c:when test="${requestScope.users.get(userIdx).totalLeaves == -1}">
+                                    <c:when test="${requestScope.users.get(userIdx).enter_date == null}">
                                         <span data-userNo="${requestScope.users.get(userIdx).user_no}" class="small-button registBtn">등록하기</span>
                                     </c:when>
                                     <c:otherwise>
-                                        ${requestScope.users.get(userIdx).totalLeaves}일 <span data-userNo="${requestScope.users.get(userIdx).user_no}" class="small-button editBtn">수정</span>
+                                        <span class="totalLeaves" data-enterDate="${requestScope.users.get(userIdx).enter_date}" data-beforeDate="${requestScope.users.get(userIdx).before_date}" >${requestScope.users.get(userIdx).totalLeaves}일</span> <span data-userNo="${requestScope.users.get(userIdx).user_no}" class="small-button editBtn">수정</span>
                                     </c:otherwise>
                                 </c:choose>
                             </c:if>

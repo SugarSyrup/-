@@ -50,7 +50,6 @@ public class LoginController {
                     .role(msg.getObj().getRole())
                     .name(msg.getObj().getName())
                     .department(msg.getObj().getDepartment())
-                    .leavesDays(msg.getObj().getLeavesDays())
                     .build();
             session.setAttribute("user", user);
             session.setAttribute("isLogin", true);

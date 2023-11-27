@@ -1,0 +1,399 @@
+main{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    width:90%;
+    position:relative;
+}
+
+div.headerContainer{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-end;
+
+    width:90%;
+    padding-top:57px;
+}
+
+div.headerContainer span.title {
+    color: #081935;
+    font-family: Gmarket Sans;
+    font-size: 62px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+div.headerContainer span.subTitle {
+    color: #081935;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+div.headerContainer a {
+    padding:6px 10px;
+    border-radius: 6px;
+    background: #081935;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor:pointer;
+}
+
+div.headerContainer a span{
+    color: #FFF;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.table_wrapper {
+    width:95%;
+    height:80vh;
+    max-height:80vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    padding-right:20px;
+    position:relative;
+    margin-top:50px;
+
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.table_wrapper::-webkit-scrollbar {
+    width:18px;
+}
+
+.table_wrapper::-webkit-scrollbar-thumb {
+    background-color:lightgrey;
+    border-radius:30px;
+}
+
+.table_wrapper::-webkit-scrollbar-track {
+    background-color:#efefef;
+    border-radius:30px;
+}
+
+.leavesTable {
+    width:100%;
+    text-align:center;
+    position:relative;
+    border-collapse: separate;
+}
+
+.leavesTable thead{
+    position:sticky;
+    top:0px;
+    width:80%;
+    height:60px;
+    background-color:white;
+}
+
+.leavesTable thead td,
+.leavesTable thead th {
+    padding-bottom:10px;
+    font-size:24px;
+    border-spacing:0;
+    border-bottom:1px solid lightgrey;
+    vertical-align:middle
+}
+
+.leavesTable thead th {
+    color: #000;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.leavesTable tbody tr td:first-child { border-top-left-radius: 16px; }
+.leavesTable tbody tr td:last-child { border-top-right-radius: 16px; }
+
+.leavesTable tbody tr td:first-child { border-bottom-left-radius: 16px; }
+.leavesTable tbody tr td:last-child { border-bottom-right-radius: 16px; }
+
+
+.leavesTable tbody tr:hover {
+    background-color:#bbbbbb;
+}
+
+.leavesTable tbody tr> td {
+    text-align:center;
+    padding-bottom:12px;
+    padding-top:12px;
+    font-size:22px;
+    font-weight:600;
+}
+
+.leavesTable .btns-wrapper {
+    display:flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.leavesTable .small-button {
+    border:none;
+    padding:4px 18px;
+    vertical-align:center;
+
+    font-size:24px;
+    color:white;
+    border-radius:6px;
+
+    background-color:#081935;
+    cursor:pointer;
+}
+
+.leavesTable thead tr th form {
+    display:flex;
+    position:relative;
+}
+
+.leavesTable thead tr th select{
+    width:160px;
+    padding:8px 10px;
+
+    border-left-top-radius:10px;
+    border-left-bottom-radius:10px;
+    border-radius: 3px;
+    border: 1px solid #CFCFCF;
+    background: #FFF;
+}
+
+.leavesTable tbody tr td span.leavePrint {
+    display: inline-flex;
+    padding: 4px 14px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background: #081935;
+
+    color: #FFF;
+    text-align: center;
+    font-family: Gmarket Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    cursor:pointer;
+}
+
+td button.delete-button {
+    background-color: #F54D4D !important;
+}
+
+div.table_wrapper div.pagination {
+    display: flex;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 900;
+
+    position:sticky;
+    top:30px;
+    right:50%;
+    transform:translateX(140px);
+}
+
+div.leavesTable div.pagination div.paginationBtn{
+    width:24px;
+    height:24px;
+    letter-spacing: -8px;
+
+    margin-top:12px;
+
+    cursor:pointer;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media print{
+
+    .no-print {
+        display:none !important;
+    }
+    .printWrapper {
+        display:block !important;
+    }
+
+
+    * {
+        -webkit-print-color-adjust: exact !important;   /* Chrome, Safari, Edge */
+        color-adjust: exact !important;
+    }
+}
+
+@page{
+    size:A4;
+    margin:0;
+}
+
+div.printWrapper {
+    display:none;
+    position:relative;
+    flex-shrink: 0;
+    width: 21cm;
+    height:30cm;
+
+    padding: 2cm;
+    background-image: url("assets/leavesForm.jpg");
+    background-repeat: no-repeat;
+}
+
+
+.printWrapper::before {
+    content: url("assets/leavesForm.jpg") !important;
+    width:100%;
+}
+
+div.printWrapper div.printTextWrapper {
+    display:flex;
+    justify-content: center;
+}
+
+div.printWrapper div.printTextWrapper span.printText {
+    font-weight: bolder;
+    font-size: 18px;
+    z-index: 20;
+}
+
+div.printWrapper div.signnameWrapper {
+    position: absolute;
+    letter-spacing: 2px;
+    top: 7.3cm;
+    left: 16.2cm;
+    width:3cm;
+}
+
+div.printWrapper div.departmentWrapper {
+    position: absolute;
+    letter-spacing: 2px;
+    top: 9.7cm;
+    left: 9cm;
+    width:15cm;
+}
+
+div.printWrapper div.roleWrapper {
+    position: absolute;
+    letter-spacing: 2px;
+    top: 11.85cm;
+    left: 9cm;
+    width:5.6cm;
+}
+
+div.printWrapper div.nameWrapper {
+    position: absolute;
+    letter-spacing: 2px;
+    top: 11.85cm;
+    left: 19cm;
+    width:7.2cm;
+}
+
+div.printWrapper span.startTime {
+    position: absolute;
+    top: 13.65cm;
+    letter-spacing: 2px;
+    left: 10.5cm;
+    font-weight: bolder;
+    font-size: 18px;
+    z-index: 20;
+    word-spacing: 30px;
+}
+
+div.printWrapper span.endTime {
+    position: absolute;
+    top: 15.15cm;
+    letter-spacing: 2px;
+    left: 10.5cm;
+    font-weight: bolder;
+    font-size: 18px;
+    z-index: 20;
+    word-spacing: 30px;
+}
+
+div.printWrapper span.dates {
+    position: absolute;
+    top: 14.45cm;
+    letter-spacing: 2px;
+    left: 21.4cm;
+    font-weight: bolder;
+    font-size: 18px;
+    z-index: 20;
+    word-spacing: 42px;
+}
+
+
+div.printWrapper span.type {
+    position: absolute;
+    top: 17.1cm;
+    letter-spacing: 16px;
+    left: 15.8cm;
+    font-weight: bolder;
+    font-size: 18px;
+    z-index: 20;
+}
+
+div.printWrapper div.desc {
+    position: absolute;
+    top: 21cm;
+    left: 5cm;
+    letter-spacing:1px;
+    word-spacing: 4px;
+    font-weight: bolder;
+    font-size: 18px;
+    z-index: 20;
+    display: flex;
+    width: 20cm;
+    justify-content: center;
+}
+
+div.printWrapper span.signdates {
+    position: absolute;
+    top: 31.95cm;
+    letter-spacing: 2px;
+    left: 12.4cm;
+    font-weight: bolder;
+    font-size: 18px;
+    z-index: 20;
+    word-spacing: 30px;
+}
+
+div.printWrapper span.undersignname {
+    position: absolute;
+    top: 33.36cm;
+    letter-spacing: 10px;
+    left: 20.6cm;
+    font-weight: bolder;
+    font-size: 18px;
+    z-index: 20;
+}
+
+div.printWrapper img.imgfile {
+    position: absolute;
+    top: 33.2cm;
+    letter-spacing: 10px;
+    left: 22.4cm;
+    z-index: 20;
+    width: 2cm;
+    height: 1cm;
+    opacity: 0.7;
+}

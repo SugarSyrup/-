@@ -63,5 +63,47 @@ public class LeavesRepository {
         return returnValue;
     }
 
+    public List<Leaves> getUserLeaves(int userno, int year) throws Exception {
+        String sql = "select * from leaves WHERE user_no = ? AND start_date LIKE ?";
+        @Cleanup Connection conn = null;
+        @Cleanup PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
+        conn = dataSource.getConnection();
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, userno);
+        pstmt.setString(2, year + "%");
+        rs = pstmt.executeQuery();
+
+        List<Leaves> returnValue = new ArrayList<Leaves>();
+        while(rs.next()) {
+            Leaves leaves = Leaves.builder()
+                    .user_no(rs.getInt("user_no"))
+                    .start_date(rs.getString("start_date"))
+                    .end_date(rs.getString("end_date"))
+                    .dates(rs.getInt("dates"))
+                    .type(rs.getString("type"))
+                    .desc(rs.getString("dates"))
+                    .build();
+
+            returnValue.add(leaves);
+        }
+        return returnValue;
+    }
+
+    public int getUserUseLeaves(int userno, int year) throws Exception {
+        String sql = "select SUM(dates) AS sum from leaves WHERE user_no = ? AND start_date LIKE ?";
+        @Cleanup Connection conn = null;
+        @Cleanup PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        conn = dataSource.getConnection();
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1, userno);
+        pstmt.setString(2, year + "%");
+        rs = pstmt.executeQuery();
+        
+        rs.next();
+        return rs.getInt("sum");
+    }
 }

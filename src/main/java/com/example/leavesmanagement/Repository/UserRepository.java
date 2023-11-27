@@ -42,7 +42,6 @@ public class UserRepository {
                     .name(rs.getString("name"))
                     .user_no(rs.getInt("user_no"))
                     .sign(rs.getString("sign"))
-                    .totalLeaves(rs.getInt("totalLeaves"))
                     .department(rs.getString("department"))
                     .role(rs.getString("role"))
                     .admin_role(rs.getString("admin_role"))
@@ -78,13 +77,11 @@ public class UserRepository {
                     .role(rs.getString("role"))
                     .name(rs.getString("name"))
                     .sign(rs.getString("sign"))
-                    .leavesDays(rs.getInt("leavesDays"))
                     .admin_role(rs.getString("admin_role"))
                     .enter_date(rs.getDate("enter_date"))
                     .regist_date(rs.getDate("regist_date"))
                     .up_date(rs.getDate("up_date"))
                     .isdelete(rs.getInt("isdelete"))
-                    .totalLeaves(rs.getInt("totalLeaves"))
                     .build();
 
         return returnValue;
@@ -111,7 +108,6 @@ public class UserRepository {
                     .role(rs.getString("role"))
                     .name(rs.getString("name"))
                     .sign(rs.getString("sign"))
-                    .leavesDays(rs.getInt("leavesDays"))
                     .admin_role(rs.getString("admin_role"))
                     .enter_date(rs.getDate("enter_date"))
                     .regist_date(rs.getDate("regist_date"))

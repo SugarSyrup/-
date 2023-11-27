@@ -19,6 +19,13 @@ div.sidebar {
     flex-shrink: 0;
 }
 
+
+@media print{
+    .no-print {
+        display: none;
+    }
+}
+
 div.sidebar div.filter {
     display:flex;
     flex-direction:column;

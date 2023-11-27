@@ -19,11 +19,9 @@ public class User {
     private String role;
     private String name;
     private String sign;
-    private int leavesDays;
     private String admin_role;
     private Date enter_date;
     private Date regist_date;
     private Date up_date;
     private int isdelete;
-    private int totalLeaves;
 }
